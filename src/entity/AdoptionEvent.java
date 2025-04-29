@@ -1,16 +1,21 @@
 package entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 public class AdoptionEvent {
-
     private String eventName;
-    private List<IAdoptable> participants;
+    private LocalDate eventDate;
 
+    // Constructor with both name and date
+    public AdoptionEvent(String eventName, LocalDate eventDate) {
+        this.eventName = eventName;
+        this.eventDate = eventDate;
+    }
+
+    // Constructor with only name; defaults to today’s date
     public AdoptionEvent(String eventName) {
         this.eventName = eventName;
-        this.participants = new ArrayList<>();
+        this.eventDate = LocalDate.now();
     }
 
     public String getEventName() {
@@ -21,16 +26,11 @@ public class AdoptionEvent {
         this.eventName = eventName;
     }
 
-    public List<IAdoptable> getParticipants() {
-        return participants;
+    public LocalDate getEventDate() {
+        return eventDate;
     }
 
-    public void hostEvent() {
-        System.out.println("Hosting Adoption Event: " + eventName);
-    }
-
-    public void registerParticipant(IAdoptable participant) {
-        participants.add(participant);
-        System.out.println("Participant registered successfully.");
+    public void setEventDate(LocalDate eventDate) {
+        this.eventDate = eventDate;
     }
 }
